@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Custom Canvas",
+    "version": "1.0.1",
+    "permissions": [
+        "activeTab"
+    ],
+    "action": {
+        "default_popup": "index.html"
+    },
+    "background": {
+        "service_worker": "src/background/index.ts"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*"
+            ],
+            "js": [
+                "src/content-script/index.tsx"
+            ]
+        }
+    ],
+    "options_page": "options.html",
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
+    }
+}
